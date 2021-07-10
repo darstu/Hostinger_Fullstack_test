@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGiftCampaignsTable extends Migration
+class CreateRatingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateGiftCampaignsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gift_campaigns', function (Blueprint $table) {
+        Schema::create('rating', function (Blueprint $table) {
             $table->id();
-            $table->string('campaign_name');
-            $table->enum('status', ['preparing', 'ready', 'dispatched']);
-            $table->date('dispatch_date');
-            $table->date('delivery_date');
+            $table->double('rating');
+            $table->string('feedback')->nullable();
+
+            $table->unsignedBigInteger('user_campaign_id');
+            $table->foreign('user_campaign_id')->references('id')->on('user_campaigns');
         });
     }
 
@@ -29,6 +30,6 @@ class CreateGiftCampaignsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gift_campaigns');
+        Schema::dropIfExists('rating');
     }
 }
