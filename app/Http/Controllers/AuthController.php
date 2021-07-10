@@ -39,10 +39,10 @@ class AuthController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'address' => 'required',
-            'phone_number' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
+            'address' => 'required',
+            'phone_number' => 'required',
         ]);
 
         $data = $request->all();
@@ -53,13 +53,25 @@ class AuthController extends Controller
 
     public function createUser(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'address' => $data['address'],
-            'phone_number' => $data['phone_number'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password'])
-        ]);
+        $count = count($data);
+        if ($count == 6) {
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'address' => $data['address'],
+                'phone_number' => $data['phone_number'],
+            ]);
+        } else {
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'address' => $data['address'],
+                'phone_number' => $data['phone_number'],
+                'role' => $data['role'],
+            ]);
+        }
     }
 
     public function mainPage()
