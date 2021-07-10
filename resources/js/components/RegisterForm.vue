@@ -18,6 +18,28 @@
                   autofocus
                 />
               </div>
+              <div class="form-group mb-3">
+                <input
+                  type="text"
+                  placeholder="Email"
+                  id="email_address"
+                  class="form-control"
+                  name="email"
+                  required
+                  autofocus
+                />
+              </div>
+
+              <div class="form-group mb-3">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  id="password"
+                  class="form-control"
+                  name="password"
+                  required
+                />
+              </div>
 
               <div class="form-group mb-3">
                 <input
@@ -45,25 +67,13 @@
 
               <div class="form-group mb-3">
                 <input
-                  type="text"
-                  placeholder="Email"
-                  id="email_address"
-                  class="form-control"
-                  name="email"
-                  required
-                  autofocus
+                  type="checkbox"
+                  id="role"
+                  class="checkbox"
+                  name="role"
+                  value="1"
                 />
-              </div>
-
-              <div class="form-group mb-3">
-                <input
-                  type="password"
-                  placeholder="Password"
-                  id="password"
-                  class="form-control"
-                  name="password"
-                  required
-                />
+                <label for="role">Check if HR</label>
               </div>
 
               <div class="d-grid mx-auto">

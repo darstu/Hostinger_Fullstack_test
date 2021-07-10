@@ -14,7 +14,7 @@
 </head>
 
 <body class="antialiased">
-    <div>
+    <div id="app">
         @guest
         @if (Route::has('loginPage'))
         @auth
@@ -30,6 +30,7 @@
 
         @yield('content')
     </div>
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 
 </html>

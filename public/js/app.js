@@ -1994,6 +1994,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -37758,7 +37768,9 @@ var render = function() {
                 _vm._v(" "),
                 _vm._m(4),
                 _vm._v(" "),
-                _vm._m(5)
+                _vm._m(5),
+                _vm._v(" "),
+                _vm._m(6)
               ]
             )
           ])
@@ -37782,6 +37794,41 @@ var staticRenderFns = [
           name: "name",
           required: "",
           autofocus: ""
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group mb-3" }, [
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          placeholder: "Email",
+          id: "email_address",
+          name: "email",
+          required: "",
+          autofocus: ""
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group mb-3" }, [
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          type: "password",
+          placeholder: "Password",
+          id: "password",
+          name: "password",
+          required: ""
         }
       })
     ])
@@ -37828,33 +37875,11 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group mb-3" }, [
       _c("input", {
-        staticClass: "form-control",
-        attrs: {
-          type: "text",
-          placeholder: "Email",
-          id: "email_address",
-          name: "email",
-          required: "",
-          autofocus: ""
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group mb-3" }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: {
-          type: "password",
-          placeholder: "Password",
-          id: "password",
-          name: "password",
-          required: ""
-        }
-      })
+        staticClass: "checkbox",
+        attrs: { type: "checkbox", id: "role", name: "role", value: "1" }
+      }),
+      _vm._v(" "),
+      _c("label", { attrs: { for: "role" } }, [_vm._v("Check if HR")])
     ])
   },
   function() {
