@@ -8,6 +8,15 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
+import Vue from 'vue'
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
+
+Vue.use(Vuetify)
+
+const opts = {}
+
+export default new Vuetify(opts)
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -21,6 +30,8 @@ window.Vue = require('vue').default;
 
 Vue.component('register-form', require('./components/RegisterForm.vue').default);
 Vue.component('login-form', require('./components/LoginForm.vue').default);
+Vue.component('pcamapign-list', require('./components/PCampaignListUser.vue').default);
+Vue.component('pcamapign-list-hr', require('./components/PCampaignListHR.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -28,6 +39,7 @@ Vue.component('login-form', require('./components/LoginForm.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
+ const app = new Vue({
     el: '#app',
+   vuetify: new Vuetify(),
 });

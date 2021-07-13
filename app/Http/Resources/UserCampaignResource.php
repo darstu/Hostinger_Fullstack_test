@@ -15,6 +15,7 @@ class UserCampaignResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'user_id' => $this->user_id,
             'campaign_id' => $this->campaign_id
         ];

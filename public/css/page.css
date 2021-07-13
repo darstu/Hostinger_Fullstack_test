@@ -1,0 +1,91 @@
+.pdfButton {
+    background-color: #673de6;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    float: right;
+}
+
+.pdfButton:focus,
+.pdfButton:hover {
+    background-color: #821ac7 !important;
+}
+
+.btn {
+    color: white !important;
+}
+
+.mainMeniuBTN {
+    float: right;
+    margin-right: 15px;
+}
+
+.seemlessLink {
+    color: white;
+    text-decoration: none;
+}
+
+.seemlessLink:focus,
+.seemlessLink:hover {
+    color: #c7afd6;
+}
+
+.center {
+    margin-left: 10px;
+    margin-right: auto;
+    width: 80%;
+}
+
+.participantsTable {
+    margin-left: 10px;
+    width: 300px;
+}
+
+.participantLine {
+    height: 20px;
+}
+
+.meniuName {
+    color: white;
+    float: left;
+    font-weight: bold;
+}
+
+.meniuPurple {
+    background-color: rgb(98, 57, 180);
+    color: white;
+    height: 50px;
+    padding: 0 0 0 0;
+    margin-bottom: 10px;
+}
+
+.informationButton {
+    position: absolute !important;
+    background-color: orange !important;
+    color: white !important;
+    bottom: 5px;
+    width: 120px;
+    right: 15px;
+}
+
+.subscribeButton {
+    position: absolute !important;
+    background-color: rgb(98, 57, 180) !important;
+    color: white !important;
+    bottom: 5px;
+    width: 120px;
+}
+
+.unsubscribeButton {
+    position: absolute !important;
+    background-color: rgb(74, 74, 75) !important;
+    color: white !important;
+    bottom: 5px;
+    width: 120px;
+}
+
+.itemsTable {
+    margin-left: 10px;
+    width: 200px;
+    margin-right: 10px;
+    float: right;
+}

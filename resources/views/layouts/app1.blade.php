@@ -12,7 +12,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('css/page.css') }}" type="text/css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="user-id" content="{{ Auth::user()->id }}">
 </head>
 
 <body>
@@ -22,13 +21,14 @@
 
                 <p class="meniuName">Hotinger Gift Campaigns System</p>
 
-                <div class="mainMeniuBTN">
-                    <a class="seemlessLink" href="{{ route('mainPage') }}">Home</a>
-                </div>
-                <div class="mainMeniuBTN">
-                    <a class="seemlessLink" href="{{ route('signout') }}">Logout</a>
-                </div>
 
+                <div class="mainMeniuBTN">
+                    <a class="seemlessLink" href="{{ route('loginPage') }}">Log in</a>
+                </div>
+                <div class="mainMeniuBTN">
+                    <a class="seemlessLink" href="{{ route('registerPage') }}">Register</a>
+
+                </div>
             </nav>
         </div>
 

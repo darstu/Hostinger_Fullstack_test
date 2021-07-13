@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User_Campaign extends Model
 {
-    protected $table = 'rating';
+    protected $table = 'user_campaigns';
 
     protected $fillable = ['user_id', 'campaign_id'];
 
