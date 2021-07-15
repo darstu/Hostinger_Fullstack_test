@@ -11,7 +11,9 @@ window.Vue = require('vue').default;
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import VueRouter from 'vue-router'
 
+//Vue.use(VueRouter)
 Vue.use(Vuetify)
 
 const opts = {}
@@ -32,6 +34,8 @@ Vue.component('register-form', require('./components/RegisterForm.vue').default)
 Vue.component('login-form', require('./components/LoginForm.vue').default);
 Vue.component('pcamapign-list', require('./components/PCampaignListUser.vue').default);
 Vue.component('pcamapign-list-hr', require('./components/PCampaignListHR.vue').default);
+Vue.component('gift-items', require('./components/GiftItems.vue').default);
+Vue.component('gift-campaigns', require('./components/GiftCampaigns.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

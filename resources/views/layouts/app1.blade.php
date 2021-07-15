@@ -16,10 +16,29 @@
 
 <body>
     <div id="app">
-        <div class="col-12 meniuPurple">
+        @if(session()->has('success'))
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+        @endif
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+        @if(session()->has('error'))
+        <div class="alert alert-danger">
+            {{ session()->get('error') }}
+        </div>
+        @endif
+        <div class=" col-12 meniuPurple">
             <nav class="navbar-expand-lg mb-5">
 
-                <p class="meniuName">Hotinger Gift Campaigns System</p>
+                <p class="meniuName">Hotinger Gift Campaigns System Task</p>
 
 
                 <div class="mainMeniuBTN">

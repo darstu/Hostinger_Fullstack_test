@@ -65,6 +65,7 @@
     bottom: 5px;
     width: 120px;
     right: 15px;
+    border: none;
 }
 
 .subscribeButton {
@@ -73,6 +74,7 @@
     color: white !important;
     bottom: 5px;
     width: 120px;
+    border: none;
 }
 
 .unsubscribeButton {
@@ -81,6 +83,16 @@
     color: white !important;
     bottom: 5px;
     width: 120px;
+    border: none;
+}
+
+.allButton {
+    background-color: rgb(74, 74, 75) !important;
+    color: white !important;
+    bottom: 5px;
+    width: 150px;
+    border: none;
+    margin: 0 0 0 10px;
 }
 
 .itemsTable {
@@ -88,4 +100,23 @@
     width: 200px;
     margin-right: 10px;
     float: right;
+}
+
+.tableHead {
+    background-color: #eba1e1;
+    color: black;
+}
+
+.status {
+    margin-bottom: 0;
+}
+
+.editButton {
+    float: right;
+    background-color: rgb(98, 57, 180) !important;
+}
+
+.cancelButton {
+    float: left;
+    background-color: rgb(184, 88, 160) !important;
 }

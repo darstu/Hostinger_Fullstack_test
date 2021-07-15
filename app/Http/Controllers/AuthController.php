@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Campaign;
+use App\Models\Campaign_Item;
+use App\Models\Item;
 use App\Models\User_Campaign;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -10,6 +12,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
+use App\Models\Rating;
 
 class AuthController extends Controller
 {
@@ -50,7 +53,7 @@ class AuthController extends Controller
         $data = $request->all();
         $check = $this->createUser($data);
 
-        return redirect()->route('loginPage')->withSuccess('You have signed-in');
+        return redirect()->route('loginPage')->withSuccess('You have registered');
     }
 
     public function createUser(array $data)
@@ -80,10 +83,19 @@ class AuthController extends Controller
     {
         if (Auth::check()) {
             $todayDate = Carbon::now()->format('Y-m-d');
+            $pCampaigns = Campaign::all();
+            $iCampaigns = Campaign::where('delivery_date', '<=', $todayDate)->get();
             $usersC = User_Campaign::where('user_id', '=', Auth::user()->id)->get();
             $aCampaigns = Campaign::where('delivery_date', '>', $todayDate)->get();
             $user = User::where('id', '=', Auth::user()->id)->first();
-            return view('mainPage', compact('user', 'aCampaigns', 'usersC'));
+            $items = Item::all();
+            $citems = Campaign_Item::all();
+            $cPc = count($pCampaigns);
+            $aCp = count($aCampaigns);
+            $iCp = count($iCampaigns);
+            $ratings = Rating::where('user_id', '=', Auth::user()->id)->get();
+
+            return view('mainPage', compact('user', 'aCampaigns', 'ratings', 'cPc', 'aCp', 'iCp', 'usersC', 'pCampaigns', 'todayDate', 'iCampaigns', 'items', 'citems'));
         }
         return redirect()->route("loginPage")->withSuccess('You are not allowed to access');
     }
@@ -95,32 +107,30 @@ class AuthController extends Controller
         return redirect()->route('loginPage')->withSuccess('You have logged out');
     }
 
-    public function subscribe(Request $request)
+    public function subscribe($index)
     {
-        $data = $request->all();
-        $create = $this->createSubscribtion($data);
+        $create = $this->createSubscribtion($index);
 
         return redirect()->route('mainPage')->withSuccess('You are subscribed');
     }
 
-    public function createSubscribtion($data)
+    public function createSubscribtion($index)
     {
         return User_Campaign::create([
             'user_id' => Auth::id(),
-            'campaign_id' => $data['campaign_id'],
+            'campaign_id' => $index,
         ]);
     }
 
-    public function unsubscribe(Request $request)
+    public function unsubscribe($index)
     {
-        $data = $request->all();
-        $create = $this->deleteSubscribtion($data);
+        $create = $this->deleteSubscribtion($index);
 
         return redirect()->route('mainPage')->withSuccess('You are unsubscribed');
     }
 
-    public function deleteSubscribtion($data)
+    public function deleteSubscribtion($index)
     {
-        return User_Campaign::where('campaign_id', '=', $data['campaign_id'])->where('user_id', '=', Auth::id())->delete();
+        return User_Campaign::where('campaign_id', '=', $index)->where('user_id', '=', Auth::id())->delete();
     }
 }
