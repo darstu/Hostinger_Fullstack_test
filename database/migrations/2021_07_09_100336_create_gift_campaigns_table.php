@@ -16,7 +16,7 @@ class CreateGiftCampaignsTable extends Migration
         Schema::create('gift_campaigns', function (Blueprint $table) {
             $table->id();
             $table->string('campaign_name');
-            $table->enum('status', ['preparing', 'ready', 'dispatched']);
+            $table->enum('status', ['preparing', 'ready', 'dispatched', 'completed']);
             $table->date('dispatch_date');
             $table->date('delivery_date');
         });

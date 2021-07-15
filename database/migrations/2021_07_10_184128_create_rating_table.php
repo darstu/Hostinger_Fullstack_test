@@ -18,8 +18,11 @@ class CreateRatingTable extends Migration
             $table->double('rating');
             $table->string('feedback')->nullable();
 
-            $table->unsignedBigInteger('user_campaign_id');
-            $table->foreign('user_campaign_id')->references('id')->on('user_campaigns');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->unsignedBigInteger('campaign_id');
+            $table->foreign('campaign_id')->references('id')->on('gift_campaigns');
         });
     }
 
