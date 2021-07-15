@@ -17,7 +17,6 @@ class RatingResource extends JsonResource
         return [
             'rating' => $this->rating,
             'feedback' => $this->feedback,
-            'user_campaign_id' => $this->user_campaign_id
         ];
     }
 }
