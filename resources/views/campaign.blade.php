@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('content')
-
+@if($user->role == 1)
 <a class="btn btn-secondary pdfButton" href="{{ route('PDF', ['index' => $campaign->id]) }}">Export to
     PDF</a>
+@endif
 <div class="center">
     <table class="table table-bordered mb-5">
         <thead style="background-color: #9653bd; color:white;">
@@ -36,9 +37,10 @@
 <div class="row">
     <div class="participantsTable col-3">
         <table class="table table-bordered">
-            <thead style=" background-color: #000000; color:white;">
+            <thead class="tableHead">
                 <tr>
-                    <td>Participants:</td>
+                    <td scope="col" class="col-1">No.</td>
+                    <td scope="col" class="col-md">Participants:</td>
                 </tr>
                 <?php
                 $c = 0; ?>
@@ -50,6 +52,7 @@
                 <?php $c = $c + 1; ?>
                 <div class="participantsLine">
                     <tr>
+                        <td>{{ $c }}</td>
                         <td>{{ $user->name }}</td>
                     </tr>
                 </div>
@@ -59,19 +62,20 @@
             </tbody>
         </table>
     </div>
-    <div class="itemsTable col-3" style="float: right">
+    @if($user->role == 1)
+    <div class="itemsTable col-4" style="float: right">
         <table class="table table-bordered">
-            <thead style=" background-color: #000000; color:white;">
+            <thead class="tableHead">
                 <tr>
-                    <td class="col-3">Item cost per box:</td>
-                    <td class="col-3">Item cost for campaign:</td>
+                    <td scope="col">Item cost per box:</td>
+                    <td scope="col">Item cost for campaign:</td>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($items as $item)
+                @foreach ($campaign_items as $citem)
+                @if ($citem->gift_id == $item->id)
                 <tr>
-                    @foreach ($items as $item)
-                    @foreach ($campaign_items as $citem)
-                    @if ($citem->gift_id == $item->id)
                     <?php
                     $price = $item->unit_price * $citem->gift_item_count;
                     $cprice = $price * $c;
@@ -82,14 +86,20 @@
                     <td>
                         {{ $cprice }} eur
                     </td>
-                    @endif
-                    @endforeach
-                    @endforeach
                 </tr>
+                @endif
+                @endforeach
+                @endforeach
 
             </tbody>
         </table>
     </div>
+    <div class="itemsTable col-4" style="float: right">
+        <h5>Campaign rating: {{ $rating }}</h5>
+        <a class="btn btn-secondary pdfButton"
+            href="{{ route('lookFeedback', ['index' => $campaign->id]) }}">Feedback</a>
+    </div>
+    @endif
 </div>
 
 @endsection
